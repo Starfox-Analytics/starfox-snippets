@@ -24,7 +24,7 @@ if (utilisateurADejaDonneSonConsentement) { // à adapter selon la CMP
   sendEvents()
 } else { // pas de choix utilisateur : il faut attendre le choix de l'utilisateur
   when (consentGiven) {
-		dataLayer.push({event: 'page_view'});
-    sendEvents()
+    dataLayer.push({event: 'page_view'});
+    envoiEventsSupplementaires();
 }
 ```

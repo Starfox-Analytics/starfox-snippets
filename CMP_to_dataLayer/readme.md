@@ -1,10 +1,10 @@
 # Readme
 
-Se référerer à notre article pour plus d'exmplications [(lien)](https://inside.starfox-analytics.com/articles/gtm-bannieres-cookie-trigger-group-:-au-secours), et plus précisément à la dernière partie
+Se référerer à notre article pour plus d'explications [(lien)](https://inside.starfox-analytics.com/articles/gtm-bannieres-cookie-trigger-group-:-au-secours), et plus précisément à la dernière partie.
 
 ## Points d'attention
 
-* Dans les fichiers html de test nous avons inclus notre GTM avec un tag GA4 vers une propriété de test. Si vous voulez utiliser votre propre conteneur il n'y a qu'à changer l'indentifiant GTM
+Dans les fichiers html de test nous avons inclus notre GTM avec un tag GA4 de test Starfox. Si vous voulez utiliser votre propre conteneur il n'y a qu'à changer l'indentifiant GTM.
 
 ## Code de principe
 

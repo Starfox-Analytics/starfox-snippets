@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    
+    // Initialisation du consent mode
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {dataLayer.push(arguments);}
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'analytics_storage': 'denied'
+    });
+
+    // Chargement d'un GTM de test avec une page vue GA4 uniquement
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-5D76CZW');
+    
+    // Chargement Axeptio
+    window.axeptioSettings = {
+        clientId: "637e3fad335bd21d4df32ede",
+        cookiesVersion: "starfox-analytics-fr",
+    };
+    (function(d, s) {
+        var t = d.getElementsByTagName(s)[0], e = d.createElement(s);
+        e.async = true; e.src = "//static.axept.io/sdk.js";
+        t.parentNode.insertBefore(e, t);
+    })(document, "script");
+    
+    // Vérification des consentements ou attente des consentements (cette méthode gère les deux cas, déjà partagé avec Christophe)
+    window._axcb = window._axcb || [];
+    window._axcb.push(function(axeptio) {
+      axeptio.on("cookies:complete", function(choices) {
+        alert("La bannière cookie vient d'être acceptée ou l'a déja été ! Un dataLayer push page_view vient donc d'être fait")
+        var consentSettings = {
+          ad_storage: !!choices['Google_Ads'] ? 'granted' : 'denied',
+          analytics_storage: !!choices['google_analytics'] ? 'granted' : 'denied',
+        };
+        gtag("consent", "update", consentSettings);
+        dataLayer.push({event: 'page_view'});
+      })
+    });
+
+  </script>
+</head>
+<body>
+  <p>
+    Ceci est une page de test Axeptio / Datalayer <br />
+    En acceptant ou en refusant les cookies dans la popin acception, une page vue sera envoyée au dataLayer <br />
+    En refraichissant la page, la page vue sera également envoyée (on garde en mémoire que l'utilisateur a déjà donné ses choix) <br />
+    Si vous voulez relancer le test, rouvrir la page dans une navigation privée.<br /><br />
+    Pour faciliter l'observation des résultats elle est liée à un Google TAG Manager qui envoie des données de page vue à une propriété Google Analytics Starfox. <br />
+    Si vous préférez utiliser votre propre conteneur merci de ne pas accepter et de modifier le code !<br />
+  </p>
+</body>
+</html>
